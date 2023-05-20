@@ -1,7 +1,10 @@
 package br.com.fatecararas.f290_dsm_tp2_suggestionbox_ct.api.v1.resources;
 
+import java.util.List;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,8 +24,13 @@ public class CategoryResource {
 
     @PostMapping("/new")
     public ResponseEntity<Void> save(@RequestBody Category category) {
-        category.setId(null);
         service.salvar(category);
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/all")
+    public ResponseEntity<List<Category>> getAll() {
+        List<Category> categories = service.getAll();
+        return ResponseEntity.ok(categories);
     }
 }

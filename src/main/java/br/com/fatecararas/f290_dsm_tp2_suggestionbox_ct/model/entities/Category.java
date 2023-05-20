@@ -8,7 +8,7 @@ import jakarta.persistence.Id;
 import lombok.Data;
 
 @Data
-@Entity(name = "categorias")
+@Entity(name = "categories")
 public class Category {
 
     @Id
